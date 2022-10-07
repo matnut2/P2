@@ -9,6 +9,9 @@ class orario{
         int Ore();
         int Minuti();
         int Secondi();
+        operator int(){return sec;};
+        orario unOraPiuTardi();
+        void avantiDiUnOra();
 };
 
 orario::orario(int o, int m, int s){
@@ -28,6 +31,16 @@ int orario::Minuti(){
 
 int orario::Secondi(){
     return sec % 60;
+}
+
+orario orario::unOraPiuTardi(){
+    orario aux;
+    aux.sec = (sec + 3600) % 86400;
+    return aux;
+}
+
+void orario::avantiDiUnOra(){
+    sec = (sec + 3600) % 86400;
 }
 
 int main(){
