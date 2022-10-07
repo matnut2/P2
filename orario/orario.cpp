@@ -12,6 +12,7 @@ class orario{
         operator int(){return sec;};
         orario unOraPiuTardi();
         void avantiDiUnOra();
+        void StampaSecondi() const;
 };
 
 orario::orario(int o, int m, int s){
@@ -42,6 +43,11 @@ orario orario::unOraPiuTardi(){
 void orario::avantiDiUnOra(){
     sec = (sec + 3600) % 86400;
 }
+
+void orario::StampaSecondi() const{
+    std::cout << sec << std::endl;
+}
+
 
 int main(){
 
