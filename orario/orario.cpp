@@ -13,6 +13,7 @@ class orario{
         orario unOraPiuTardi();
         void avantiDiUnOra();
         void StampaSecondi() const;
+        static orario OraDiPranzo();
 };
 
 orario::orario(int o, int m, int s){
@@ -48,6 +49,9 @@ void orario::StampaSecondi() const{
     std::cout << sec << std::endl;
 }
 
+orario orario::OraDiPranzo(){
+    return orario(13, 15);
+}
 
 int main(){
 
