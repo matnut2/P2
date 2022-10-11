@@ -6,9 +6,9 @@ class orario{
 
     public:
         orario(int=0, int=0, int=0);
-        int Ore();
-        int Minuti();
-        int Secondi();
+        int Ore() const;
+        int Minuti() const;
+        int Secondi() const;
         operator int(){return sec;};
         orario unOraPiuTardi();
         void avantiDiUnOra();
@@ -22,6 +22,7 @@ class orario{
         bool operator==(orario) const;
         bool operator>(orario) const;
         bool operator<(orario) const;
+        std::ostream& operator<<(std::ostream& os) const;
 };
 
 orario::orario(int o, int m, int s){
@@ -31,15 +32,15 @@ orario::orario(int o, int m, int s){
     else sec = 0;
 }
 
-int orario::Ore(){
+int orario::Ore() const{
     return sec / 3600;
 }
 
-int orario::Minuti(){
+int orario::Minuti() const{
     return ( sec / 60 ) % 60;
 }
 
-int orario::Secondi(){
+int orario::Secondi() const{
     return sec % 60;
 }
 
@@ -91,6 +92,14 @@ bool orario::operator>(orario o) const{
 
 bool orario::operator<(orario o) const{
     return sec < o.sec ? true : false;
+}
+
+std::ostream& orario::operator<<(std::ostream& os) const{
+    return os << Ore() << ':' << Minuti() << ':' << Secondi();
+}
+
+std::ostream & operator<<(std::ostream& os, const orario& o){
+    return os << o.Ore() << ':' << o.Minuti() << ':' << o.Secondi();
 }
 
 int main(){
