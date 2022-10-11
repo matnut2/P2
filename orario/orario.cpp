@@ -18,6 +18,10 @@ class orario{
         static const int Sec_di_un_Giorno = 86400;
         orario Somma(orario) const;
         orario operator+(orario) const;
+        orario operator-(orario) const;
+        bool operator==(orario) const;
+        bool operator>(orario) const;
+        bool operator<(orario) const;
 };
 
 orario::orario(int o, int m, int s){
@@ -69,6 +73,24 @@ orario orario::operator+(orario o) const{
     aux.sec = (sec + o.sec) % 86400;
 
     return aux;
+}
+
+orario orario::operator-(orario o) const{
+    orario aux;
+    aux.sec = (sec - o.sec) % 86400;
+    return aux;
+}
+
+bool orario::operator==(orario o) const{
+    return sec == o.sec ? true : false;
+}
+
+bool orario::operator>(orario o) const{
+    return sec > o.sec ? true : false;
+}
+
+bool orario::operator<(orario o) const{
+    return sec < o.sec ? true : false;
 }
 
 int main(){
