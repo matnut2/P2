@@ -14,8 +14,8 @@ class orario{
         void avantiDiUnOra();
         void StampaSecondi() const;
         static orario OraDiPranzo();
-        static int Sec_di_un_Ora;
-        static int Sec_di_un_Giorno;
+        static const int Sec_di_un_Ora = 3600;
+        static const int Sec_di_un_Giorno = 84600;
 };
 
 orario::orario(int o, int m, int s){
@@ -54,9 +54,6 @@ void orario::StampaSecondi() const{
 orario orario::OraDiPranzo(){
     return orario(13, 15);
 }
-
-int orario::Sec_di_un_Ora = 3600;
-int orario::Sec_di_un_Giorno = 86400;
 
 int main(){
 
