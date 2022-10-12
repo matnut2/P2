@@ -1,6 +1,6 @@
 #include "Punto.h";
 
 
-int mani(){
+int main(){
 
 }
