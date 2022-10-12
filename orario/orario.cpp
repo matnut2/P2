@@ -17,7 +17,7 @@ class orario{
         static const int Sec_di_un_Ora = 3600;
         static const int Sec_di_un_Giorno = 86400;
         orario Somma(orario) const;
-        orario operator+(orario) const;
+        /*orario operator+(orario) const;*/
         orario operator-(orario) const;
         bool operator==(orario) const;
         bool operator>(orario) const;
@@ -68,13 +68,14 @@ orario orario::Somma(orario o) const{
 
     return aux;
 }
-
+/*
 orario orario::operator+(orario o) const{
     orario aux;
     aux.sec = (sec + o.sec) % 86400;
 
     return aux;
 }
+*/
 
 orario orario::operator-(orario o) const{
     orario aux;
@@ -100,6 +101,17 @@ std::ostream& orario::operator<<(std::ostream& os) const{
 
 std::ostream & operator<<(std::ostream& os, const orario& o){
     return os << o.Ore() << ':' << o.Minuti() << ':' << o.Secondi();
+}
+
+orario operator+(const orario& t, const orario& s){
+    int sec = t.Secondi() + s.Secondi();
+    int min = t.Minuti() + s.Minuti() + sec / 60;
+    sec = sec % 60;
+    int ore = t.Ore() + s.Ore() + min / 60;
+    min = min % 60;
+    ore = ore % 24;
+
+    return orario(ore, min, sec);
 }
 
 int main(){
