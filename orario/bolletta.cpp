@@ -95,3 +95,8 @@ bolletta Chiamate_A(int num, bolletta& b){
     b = resto;
     return selezionate;
 }
+
+bolletta::~bolletta(){ if(first) delete first;}
+bolletta::nodo::~nodo(){
+    if(next != 0) delete next;
+}

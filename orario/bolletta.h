@@ -18,6 +18,7 @@ class bolletta{
     
     public:
         bolletta();
+        ~bolletta();
         bolletta(const bolletta&);
         bool Vuota() const;
         void Aggiungi_Telefonata(const telefonata&);
