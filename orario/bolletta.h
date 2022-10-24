@@ -25,6 +25,7 @@ class bolletta{
         void Togli_Telefonata(const telefonata&);
         telefonata Estrai_Una();
         bolletta& operator=(const bolletta&);
+        friend std::ostream& operator<<(std::ostream&, const bolletta&);
 };
 
 orario Somma_Durata(bolletta b);

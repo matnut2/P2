@@ -100,3 +100,15 @@ bolletta::~bolletta(){ if(first) delete first;}
 bolletta::nodo::~nodo(){
     if(next != 0) delete next;
 }
+
+std::ostream& operator<<(std::ostream& os, const bolletta& b){
+    os << "TELEFONATE IN BOLLETTA" << std::endl;
+    bolletta::nodo* p = b.first;
+    int i = 1;
+    while(p){
+        os << i++ << ") " << p->info << std::endl;
+        p= p->next;
+    }
+
+    return os;
+}
