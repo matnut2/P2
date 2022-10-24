@@ -5,14 +5,15 @@
 
 class orario{
     private:
-        int sec;
+        class orario_rappr;
+        orario_rappr* punt;
 
     public:
         orario(int=0, int=0, int=0);
         int Ore() const;
         int Minuti() const;
         int Secondi() const;
-        operator int(){return sec;};
+        operator int();
         orario unOraPiuTardi();
         void avantiDiUnOra();
         void StampaSecondi() const;

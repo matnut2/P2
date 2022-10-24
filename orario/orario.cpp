@@ -1,36 +1,41 @@
 #include "orario.h"
 
-orario::orario(int o, int m, int s){
+class orario::orario_rappr{
+    public:
+        int sec;
+};
+
+orario::orario(int o, int m, int s) : punt(new orario_rappr){
     
     if( o >= 0 && o <= 24 && m >= 0 && m <= 60 && s >= 0 && s <= 60)
-        sec = o * 3600 + m * 60 + s;
-    else sec = 0;
+        punt->sec = o * 3600 + m * 60 + s;
+    else punt->sec = 0;
 }
 
 int orario::Ore() const{
-    return sec / 3600;
+    return punt->sec / 3600;
 }
 
 int orario::Minuti() const{
-    return ( sec / 60 ) % 60;
+    return ( punt->sec / 60 ) % 60;
 }
 
 int orario::Secondi() const{
-    return sec % 60;
+    return punt->sec % 60;
 }
 
 orario orario::unOraPiuTardi(){
     orario aux;
-    aux.sec = (sec + 3600) % 86400;
+    aux.punt->sec = (punt->sec + 3600) % 86400;
     return aux;
 }
 
 void orario::avantiDiUnOra(){
-    sec = (sec + 3600) % 86400;
+    punt->sec = (punt->sec + 3600) % 86400;
 }
 
 void orario::StampaSecondi() const{
-    std::cout << sec << std::endl;
+    std::cout << punt->sec << std::endl;
 }
 
 orario orario::OraDiPranzo(){
@@ -39,14 +44,14 @@ orario orario::OraDiPranzo(){
 
 orario orario::Somma(orario o) const{
     orario aux;
-    aux.sec = sec + o.sec;
+    aux.punt->sec = punt->sec + o.punt->sec;
 
     return aux;
 }
 /*
 orario orario::operator+(orario o) const{
     orario aux;
-    aux.sec = (sec + o.sec) % 86400;
+    aux.punt->sec = (punt->sec + o.punt->sec) % 86400;
 
     return aux;
 }
@@ -54,25 +59,25 @@ orario orario::operator+(orario o) const{
 
 orario orario::operator-(orario o) const{
     orario aux;
-    aux.sec = (sec - o.sec) % 86400;
+    aux.punt->sec = (punt->sec - o.punt->sec) % 86400;
     return aux;
 }
 
 bool orario::operator==(orario o) const{
-    return sec == o.sec ? true : false;
+    return punt->sec == o.punt->sec ? true : false;
 }
 
 bool orario::operator>(orario o) const{
-    return sec > o.sec ? true : false;
+    return punt->sec > o.punt->sec ? true : false;
 }
 
 bool orario::operator<(orario o) const{
-    return sec < o.sec ? true : false;
+    return punt->sec < o.punt->sec ? true : false;
 }
 
 /*
 std::ostream& orario::operator<<(std::ostream& os) const{
-    return os << Ore() << ':' << Minuti() << ':' << Secondi();
+    return os << Ore() << ':' << Minuti() << ':' << punt->secondi();
 }
 */
 
@@ -91,3 +96,4 @@ orario operator+(const orario& t, const orario& s){
     return orario(ore, min, sec);
 }
 
+orario::operator int(){return punt->sec;}
