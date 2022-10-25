@@ -115,3 +115,17 @@ Dato l'array `int link[5] = { 2, 3, 4, 0, 1)` quale output daranno i seguenti _s
 * `cout << link[0]` -> 2
 * `cout << link[link[2]]` -> 1
 * `cout << [link[link[link[link[link[k]]]]]` -> k
+
+## Esercizio 5
+Una sequenza di numeri secondo Fibonacci è definita come segue: i primi due numeri in sequenza sono 0 e 1, dopo vengono aggiunti i numeri che sono la somma dei due numeri precedenti. Completare la dichiarazione della funzione affinché funzioni correttamente
+
+```
+void fib_general(int F[], int fib_num){
+    F[0] = 0;
+    F[1] = 1;
+
+    for(int i = 0; i < fib_num; ++i){
+        F[i] = F[i-1] + F[i-2];
+    }
+}
+```
