@@ -1,5 +1,43 @@
 #include "bolletta.h"
 
+bool bolletta::iteratore::operator==(const iteratore& i) const{
+    return punt == i.punt;
+}
+
+bool bolletta::iteratore::operator!=(const iteratore& i) const{
+    return punt != i.punt;
+}
+
+bolletta::iteratore& bolletta::iteratore::operator++(){
+    if(punt) punt = punt->next;
+    return *this;
+}
+
+bolletta::iteratore bolletta::iteratore::operator++(int){
+    iteratore aux = *this;
+    if(punt) punt = punt->next;
+    return aux;
+}
+
+bolletta::iteratore bolletta::begin() const{
+    bolletta::iteratore aux;
+    aux.punt = first;
+    return aux;
+}
+
+bolletta::iteratore bolletta::end() const{
+    bolletta::iteratore aux;
+    aux.punt = nullptr;
+    return aux;
+}
+
+telefonata& bolletta::operator[](const bolletta::iteratore& it) const{
+    return (it.punt)->info;
+}
+
+
+
+
 bolletta::nodo::nodo() : next(0) {} 
 bolletta::nodo::nodo(const telefonata& t, nodo * s) : info(t), next(s) {}
 bolletta::bolletta() : first(0) {}
@@ -111,4 +149,12 @@ std::ostream& operator<<(std::ostream& os, const bolletta& b){
     }
 
     return os;
+}
+
+orario Somma_Durate(const bolletta& b){
+    orario durata;
+    for(bolletta::iteratore it=b.begin(); it != b.end(); ++it)
+        durata = durata + (it->Fine() -it->Inizio());
+
+        return durata;
 }

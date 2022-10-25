@@ -26,6 +26,29 @@ class bolletta{
         telefonata Estrai_Una();
         bolletta& operator=(const bolletta&);
         friend std::ostream& operator<<(std::ostream&, const bolletta&);
+
+        class iteratore{
+            friend class bolletta;
+
+            public:
+                bool operator==(const iteratore&) const;
+                bool operator!=(const iteratore&) const;
+                iteratore& operator++();
+                iteratore operator++(int);
+                telefonata* operator->() const{return &(punt->info);}
+                telefonata& operator*() const {return punt->info;}
+
+            private:
+                bolletta::nodo* punt;
+        };
+
+        iteratore begin() const;
+        iteratore end() const;
+        telefonata& operator[](const iteratore&) const;
+
+        orario Somma_Durate(const bolletta&);
+
+
 };
 
 orario Somma_Durata(bolletta b);
