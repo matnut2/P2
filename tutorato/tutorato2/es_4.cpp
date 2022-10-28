@@ -17,6 +17,7 @@ class C {
         E& r;
         int* const p;
     public:
+        C() :r(x), p(nullptr) {};
 };
 int main() {
     C c;

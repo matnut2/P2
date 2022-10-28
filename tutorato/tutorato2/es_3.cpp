@@ -40,4 +40,21 @@ class Persona{
         data morte;
 
     public:
+        Persona(std::string n = "X", std::string c = "X", data birth = 0, data death = 0) : nome(n), cognome(c), nascita(birth), morte(death) {};
+        std::string Nome() const { return nome; };
+        std::string Cognome() const { return cognome; };
+        data Nascita() const { return nascita; };
+        data Morte() const { return morte; };
 };
+
+std::ostream& operator<<(std::ostream& os, const Persona& p){
+    return os << "NOME: " << p.Nome() << "\nCOGNOME: " << p.Cognome() << "\nNASCITA: " << p.Nascita() << "\nMORTE: " << p.Morte(); 
+}
+
+int main(void){
+    Persona Matteo("Matteo", "Solda", data(29,6,2000)), Morto("Lui", "Morto", data(10, 12, 1500), data(10,12,1525)), base;
+    std::cout << Matteo << std::endl;
+    std::cout << Morto << std::endl; 
+    std::cout << base << std::endl;
+    return 0;
+}
