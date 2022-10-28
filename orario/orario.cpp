@@ -81,7 +81,7 @@ std::ostream& orario::operator<<(std::ostream& os) const{
 }
 */
 
-std::ostream & operator<<(std::ostream& os, const orario& o){
+std::ostream& operator<<(std::ostream& os, const orario& o){
     return os << o.Ore() << ':' << o.Minuti() << ':' << o.Secondi();
 }
 
