@@ -36,8 +36,7 @@ C E::x = 9;
    // poi lo deferenzia e fa assegnazione a c. NB tutto ciò che sta dopo il return non viene considerato
    c = d.z1.k; cout << "**5\n"; // 6 C01 -> Viene preso il valore k attraverso il costruttore di C (r.7),
    // creando il nuovo oggetto avremmo assegnato 6
-   E e1(d); cout << "**6\n"; // 6 C01 6 C01 Dc 6 C01 8 C01 D0 E(D) ->Viene richiamato il costruttore E (r.22), 
-   prende un parametro per valore, quindi chiama costruttore di copia D (r.15)
+   E e1(d); cout << "**6\n"; // 6 C01 6 C01 Dc 6 C01 8 C01 D0 E(D) ->Viene richiamato il costruttore E (r.22),  prende un parametro per valore, quindi chiama costruttore di copia D (r.15)
    // costruendo z1 con il parametro x che è a sua volta il valore d(=6), poi costruisce z2, chiamando il
     costruttore C; ora si creano tutti i campi dati della classe E
     

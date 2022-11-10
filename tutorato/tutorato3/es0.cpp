@@ -16,5 +16,9 @@ C f(C a) {
 
 int main() {
     C x;
-    C y = f(f(x));
+    C y = f(f(x)); 
+
+    /*
+       ***** 
+    */
 }
