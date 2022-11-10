@@ -19,13 +19,13 @@ class D2 {
 };
 
 int main() {
-    D x;
+    D x;            // C0 D0
     cout << endl;
-    D y(x);
+    D y(x);         // Cc
     cout << endl;
 
-    D2 xx;
+    D2 xx;          // C0 D0
     cout << endl;
-    D2 yy(xx);
+    D2 yy(xx);      // C0 Dc
     cout << endl;
 }

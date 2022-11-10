@@ -21,11 +21,11 @@ class C {
 };
 
 int main() {
-    C c1;
+    C c1;                           // D01 (Dc) CO
     cout << "UNO" << endl;
-    C c2(3);
+    C c2(3);                        // D01 C1
     cout << "DUE" << endl;
-    C c3(c2);
+    C c3(c2);                       // Dc Cc
     cout << "TRE" << endl;
 
 return 0;
