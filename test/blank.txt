@@ -1,0 +1,32 @@
+class C {
+    public:
+        static void f(const C& x) {}
+};
+class D {
+    public:
+        D(C x = C()) {}
+        void g() const {}
+};
+class E {
+    public:
+        E(D x = D()) {}
+        operator C() const {return C();}
+        static void h(const E& x) {C::f(x);}
+        void i() const {C::f(*this);}
+};
+
+C c; D d; E e;
+
+// Delle seguenti istruzioni, quali compilano e quali no?
+
+E::h(c);    \\ NON COMPILA -> h chiede const E& e non esiste una conversione da C
+c.g();      \\ NON COMPILA -> la classe C non ha metodi g()
+E::h(d);    \\ COMPILA     -> Usa il convertitore implicito
+e.i();      \\ COMPILA     -> il this dereferenziato è convertibile tramite il convertitore
+C::f(d);    \\ NON COMPILA -> non c'è un convertitore da D a C
+C::f(e);    \\ COMPILA     -> c'è il compilatore da E a C
+d.i();      \\ NON COMPILA -> D non ha metodi i()  
+E e1(c);    \\ COMPILA     -> conversione a catena C -> D -> E
+D d1(c);    \\ COMPILA     -> conversione C -> D
+C c1(e);    \\ COMPILA     -> operator C() fa da convertitore
+C c2(d);    \\ NON COMPILA -> non c'è un convertitore da D a C
